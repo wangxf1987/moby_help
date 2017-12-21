@@ -36,19 +36,23 @@ else
     exit 1
 fi
 
+echo -e "###Clear logs###\n"
+for host in ${host_list[@]};
+do
+    # clear all logs
+    echo -e "Clear all logs on the $host.\n"
+    ssh root@$host 'echo "" > /var/log/messages'
+    if [ $? -ne 0 ];then
+        echo -e "Error: ssh and executed commands failtrue.\n"
+    fi    
+done
+
 echo -e "###Copy file to target host###\n"
 for host in ${host_list[@]};
 do  
     # stop docker service
     echo -e "Stop docker service on the $host.\n"
     ssh root@$host 'systemctl stop docker'
-    if [ $? -ne 0 ];then
-        echo -e "Error: ssh and executed commands failtrue.\n"
-    fi
-    
-    # clear all logs
-    echo -e "Clear all logs on the $host.\n"
-    ssh root@$host 'echo "" > /var/log/message'
     if [ $? -ne 0 ];then
         echo -e "Error: ssh and executed commands failtrue.\n"
     fi
