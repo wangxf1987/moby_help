@@ -57,6 +57,16 @@ do
         echo -e "Error: ssh and executed commands failtrue.\n"
     fi
     
+<<<<<<< HEAD
+=======
+    # clear all logs
+    echo -e "Clear all logs on the $host.\n"
+    ssh root@$host 'echo "" > /var/log/messages'
+    if [ $? -ne 0 ];then
+        echo -e "Error: ssh and executed commands failtrue.\n"
+    fi
+    
+>>>>>>> 809df758dc604d43e5e4d1912e3332839dc03883
     # copy files to target host
     for file_item in ${dockers[@]};
     do
