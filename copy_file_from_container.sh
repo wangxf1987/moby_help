@@ -9,11 +9,7 @@ dockers=(docker
          docker-runc
          dockerd)
 # target hosts, array
-host_list=(172.19.147.9
-           172.19.147.10 
-           172.19.147.11 
-           172.19.147.12 
-           172.19.147.13)
+host_list=()
 # get the contaier id for moby env, and if get a lot of
 # containers, the script will be exit.
 con_id_count=$(docker ps -q|wc -l)
